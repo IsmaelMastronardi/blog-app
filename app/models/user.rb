@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_many :posts, foreign_key: 'author_id'
   has_many :likes
 
-  def top_comments
-    comments.order(created_at: :asc).limit(3)
+  def top_posts
+    posts.order(created_at: :desc).limit(3)
   end
 end
