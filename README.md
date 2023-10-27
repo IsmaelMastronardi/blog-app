@@ -62,13 +62,24 @@
 
 To get a local copy up and running, follow these steps.
 
-### Install
+### Prerequisites
 
-Install this project with:
+In order to run this project you need:
+
+Example command:
 
 ```sh
-  bundle install
-  npm install
+ Install Ruby
+ Install rails
+```
+
+### Setup
+
+Clone this repository to your desired folder:
+
+```sh
+  cd my-folder
+  git https://github.com/IsmaelMastronardi/blog-app.git
 ```
 
 ### Usage
@@ -76,8 +87,19 @@ Install this project with:
 To run the project, execute the following command:
 
 ```sh
-  rails server
+  rails s
 ```
+
+### Run tests
+
+To run tests, run the following command:
+
+```sh
+  rails test
+```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 <!-- AUTHORS -->
 
