@@ -1,37 +1,37 @@
 require 'rails_helper'
 
-RSpec.describe "Users", type: :request do
-  describe "GET /index" do
+RSpec.describe 'Users', type: :request do
+  describe 'GET /index' do
     before(:each) do
-      get "/users"
+      get '/users'
     end
-    it "returns http success" do
+    it 'returns http success' do
       expect(response.status).to eq(200)
     end
 
-    it "renders the correct template" do
+    it 'renders the correct template' do
       expect(response).to render_template('users/index')
     end
 
-    it "renders the correct view" do
-      assert_select "h1", "lists of users"
+    it 'renders the correct view' do
+      assert_select 'h1', 'lists of users'
     end
   end
 
-  describe "GET /users/:user_id" do
+  describe 'GET /users/:user_id' do
     before(:each) do
-      get "/users/:user_id"
+      get '/users/:user_id'
     end
-    it "returns http success" do
+    it 'returns http success' do
       expect(response.status).to eq(200)
     end
 
-    it "renders the correct template" do
+    it 'renders the correct template' do
       expect(response).to render_template('users/show')
     end
 
-    it "renders the correct view" do
-      assert_select "h1", "The  specific user"
+    it 'renders the correct view' do
+      assert_select 'h1', 'The  specific user'
     end
   end
 end
