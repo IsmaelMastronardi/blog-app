@@ -1,1 +1,23 @@
 <h1> List of posts</h1>
+<div>
+  <%= @user.photo %>
+  <div>
+  <%= @user.name %>
+  Nuber of posts: <%= @user.comments.count %>
+  </div>
+</div>
+
+<% @posts.each_with_index do |post, index|%>
+  <div>
+    Post #<%= index %>
+    <%= post.text %>
+  </div>
+  <div>
+    <% post.comments.each do |comment| %>
+    <% user = User.find(comment.user_id) %>
+    <%= user.name %>: 
+    <%= comment.text %>
+    <br>
+    <% end %>
+  </div>
+<% end %>
