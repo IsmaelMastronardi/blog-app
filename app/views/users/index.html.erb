@@ -1,6 +1,6 @@
 <h1>lists of users</h1>
 <% @users.each do |user| %>
-  <div> <img src=<%= user.photo%>> </div>
+  <div> <img src=<%= user.photo%> width="200" heigth="200"> </div>
   Picture: <%= user.photo%>
   <div>
   <a href="<%= user_path(user) %>">
