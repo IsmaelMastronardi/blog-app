@@ -1,1 +1,20 @@
 <h1>The  specific user</h1>
+<div>
+  <%= @user.photo %>
+  <%= @user.name %>
+  <%= @user.posts.count %>
+</div>
+<div>
+  Bio: 
+  <%= @user.bio %>
+</div>
+<% @user.posts.each_with_index do |post, index| %>
+  <a href="<%= user_post_path(@user, post) %>">
+    <div>
+      Post #<%= index + 1 %><br>
+      <%= post.text %>
+      <%= post.comments.count %>
+      <%= post.likes.count %>
+    </div>
+  </a>
+<% end %>

@@ -1,1 +1,15 @@
 <h1>specific post</h1>
+Title : <%= @post.title%>
+<article>
+  <div>
+    <div>
+      Post # X
+    <div>
+    <div>
+      Comments : <%= @post.comments.count %>, Likes: <%= @post.comments.count %>
+    </div>
+  </div>
+  <div>
+    <%= @post.text %>
+  </div>
+</article>
