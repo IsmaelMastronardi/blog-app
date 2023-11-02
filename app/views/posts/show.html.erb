@@ -1,23 +1,23 @@
-<h1>specific post</h1>
-Title : <%= @post.title%>
-<article>
-  <div>
-    <div>
-      Post # X
-    <div>
-    <div>
-      Comments : <%= @post.comments.count %>, Likes: <%= @post.comments.count %>
+<% author = User.find(@post.author_id) %>
+
+<section class="w-full">
+  <div class="container w-full">
+    <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+      <div class="flex-grow">
+        <h2 class="text-gray-900 title-font font-medium">Post #1 by <%= author.name %> </h2>
+        <p class="text-gray-400">Comments: <%= @post.comments.count%>, Likes: <%= @post.likes.count %></p>
+        <p class="text-gray-500"><%= @post.text%></p>
+      </div>
+    </div>
+    <div class="h-full border-gray-200 border p-4 rounded-lg mb-20">
+      <% if @post.comments.count >= 1 %> 
+        <% @post.top_comments.each do |comment| %>
+          <% comentor = User.find(comment.user_id) %>
+          <p class="text-gray-500"><%= comentor.name %>: <%= comment.text %></p>
+        <% end %>
+        <% else %>
+          <p class="text-gray-500">No comments yet.</p>
+      <% end %>
     </div>
   </div>
-  <div>
-    <%= @post.text %>
-  </div>
-</article>
-<div>
-  <% @post.comments.each do |comment| %>
-  <% user = User.find(comment.user_id) %>
-  <%= user.name %>: 
-  <%= comment.text %>
-  <br>
-  <% end %>
-</div>
+</section>
