@@ -70,12 +70,10 @@ group :test do
   gem 'selenium-webdriver'
 end
 
-gem "tailwindcss-rails", "~> 2.0"
+gem 'tailwindcss-rails', '~> 2.0'
 
 gem 'foreman', '~> 0.87.2'
 
 gem 'hotwire-livereload'
 
-if Gem.win_platform?
-  gem 'wdm', '>= 0.1.0'
-end
+gem 'wdm', '>= 0.1.0' if Gem.win_platform?
