@@ -11,7 +11,7 @@
     </div>
     <div class="h-full border-gray-200 border p-4 rounded-lg mb-20">
       <% if @post.comments.count >= 1 %> 
-        <% @post.top_comments.each do |comment| %>
+        <% @post.comments.each do |comment| %>
           <% comentor = User.find(comment.user_id) %>
           <p class="text-gray-500"><%= comentor.name %>: <%= comment.text %></p>
         <% end %>
