@@ -1,33 +1,28 @@
 <section class="w-full">
-  <div class="container w-full mb-4">
-    <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+  <div class="container w-full">
+    <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg mb-4">
       <img src=<%= @user.photo%> alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/108x98">
       <div class="flex-grow">
         <h2 class="text-gray-900 title-font font-medium"><%= @user.name %></h2>
         <p class="text-gray-500">number of posts: <%= @user.posts.count%></p>
       </div>
     </div>
-  </div>
-  <div class="container w-full mb-4">
-    <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+    <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg mb-4">
       <div class="flex-grow">
       <h2 class="text-gray-900 title-font font-medium">Bio: </h2>
         <p class="text-gray-500"><%= @user.bio%></p>
       </div>
     </div>
+    <% @user.posts.each_with_index do |post, index| %>
+        <a href="<%= user_post_path(@user, post) %>" class="h-full flex items-center border-gray-200 border p-4 rounded-lg mb-4">
+          <div class="flex-grow"> 
+            <h2 class="text-gray-900 title-font font-medium" >Post #<%= index + 1 %></h2>
+            <p class="text-gray-500"><%= post.text %></p>
+            <p class="text-gray-500">Comments: <%= post.comments.count %> Likes: <%= post.likes.count %> </p>
+          </div>
+        </a>
+    <% end %>
   </div>
-
-  <% @user.posts.each_with_index do |post, index| %>
-    <div class="container w-full mb-4">
-      <a href="<%= user_post_path(@user, post) %>" class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
-        <div class="flex-grow"> 
-          <h2 class="text-gray-900 title-font font-medium" >Post #<%= index + 1 %></h2>
-          <p class="text-gray-500"><%= post.text %></p>
-          <p class="text-gray-500">Comments: <%= post.comments.count %> Likes: <%= post.likes.count %> </p>
-        </div>
-      </a>
-    </div>
-  <% end %>
   
 </section>
 
