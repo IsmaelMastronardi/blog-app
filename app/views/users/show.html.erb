@@ -1,25 +1,35 @@
-<h1>The  specific user</h1>
-<div>
-  <%= @user.photo %>
-  <%= @user.name %>
-  <%= @user.posts.count %>
-</div>
-<div>
-  Bio: 
-  <%= @user.bio %>
-</div>
-<% @user.posts.each_with_index do |post, index| %>
-  <a href="<%= user_post_path(@user, post) %>">
-    <div>
-      Post #<%= index + 1 %><br>
-      <%= post.text %>
-      <%= post.comments.count %>
-      <%= post.likes.count %>
+<section class="w-full">
+  <div class="container w-full mb-4">
+    <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+      <img src=<%= @user.photo%> alt="team" class="w-16 h-16 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4" src="https://dummyimage.com/108x98">
+      <div class="flex-grow">
+        <h2 class="text-gray-900 title-font font-medium"><%= @user.name %></h2>
+        <p class="text-gray-500">number of posts: <%= @user.posts.count%></p>
+      </div>
     </div>
-  </a>
-<% end %>
-<button>
-  <a href="<%= user_posts_path(@user) %>">
-    See all posts
-  </a>
-<button>
+  </div>
+  <div class="container w-full mb-4">
+    <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+      <div class="flex-grow">
+      <h2 class="text-gray-900 title-font font-medium">Bio: </h2>
+        <p class="text-gray-500"><%= @user.bio%></p>
+      </div>
+    </div>
+  </div>
+
+  <% @user.posts.each_with_index do |post, index| %>
+    <div class="container w-full mb-4">
+      <a href="<%= user_post_path(@user, post) %>" class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
+        <div class="flex-grow"> 
+          <h2 class="text-gray-900 title-font font-medium" >Post #<%= index + 1 %></h2>
+          <p class="text-gray-500"><%= post.text %></p>
+          <p class="text-gray-500">Comments: <%= post.comments.count %> Likes: <%= post.likes.count %> </p>
+        </div>
+      </a>
+    </div>
+  <% end %>
+  
+</section>
+
+
+
