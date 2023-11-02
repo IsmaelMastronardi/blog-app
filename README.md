@@ -105,8 +105,6 @@ To run tests, run the following command:
 
 ## 👥 Authors <a name="authors"></a>
 
-> Mention all of the collaborators of this project.
-
 👤 **Ismael Mastronardi**
 
 - GitHub: [@githubhandle](https://github.com/IsmaelMastronardi)
@@ -137,6 +135,8 @@ Feel free to check the [issues page](https://github.com/IsmaelMastronardi/blog-a
 <!-- ACKNOWLEDGEMENTS -->
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
+
+I want to thank my family for their support and encouragement. Your love means the world to me.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
