@@ -17,6 +17,7 @@
       <a href="<%= user_post_path(@user, post) %>" class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
         <div class="flex-grow"> 
           <h2 class="text-gray-900 title-font font-medium" >Post #<%= index + 1 %></h2>
+          <h2 class="text-gray-900 title-font font-medium" ><%= post.title%></h2>
           <p class="text-gray-500"><%= post.text %></p>
           <p class="text-gray-500">Comments: <%= post.comments.count %> Likes: <%= post.likes.count %> </p>
         </div>
