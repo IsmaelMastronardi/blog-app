@@ -16,11 +16,13 @@ class PostsController < ApplicationController
   end
 
   def create
-    puts 'aaaaaaaaaaaaaaa creating'
+    @user = User.find(params[:user_id])
     @new_post = current_user.posts.build(post_params)
-    puts @new_post.title
-    puts @new_post.text
-    puts 'aaaaaaaaaaaaaaa created'
+    if @new_post.save 
+      redirect_to user_posts_path(@user)
+    else 
+      render :new 
+    end
   end
 
   private
