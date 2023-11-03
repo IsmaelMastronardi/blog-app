@@ -19,5 +19,14 @@
           <p class="text-gray-500">No comments yet.</p>
       <% end %>
     </div>
+    <div class=" border-gray-200 border p-4 rounded-lg p-2 lg:w-1/3 md:w-1/2 w-full mx-auto">
+      <div class="flex-grow">   
+        <a href="<%= new_user_post_comment_path(@user, @post) %>" class="flex justify-center">
+          <button class="p-2 lg:w-1/3 md:w-1/2 w-full">
+          Make a Comment
+          </button>
+        </a>
+      </div>
+    </div>
   </div>
 </section>
