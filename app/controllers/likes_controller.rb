@@ -5,5 +5,4 @@ class LikesController < ApplicationController
     @new_like = Like.create(user: current_user, post: @post)
     redirect_back(fallback_location: user_path(@poster))
   end
-
 end

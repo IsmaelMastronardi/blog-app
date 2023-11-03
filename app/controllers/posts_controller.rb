@@ -19,10 +19,10 @@ class PostsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @new_post = current_user.posts.build(post_params)
-    if @new_post.save 
+    if @new_post.save
       redirect_to user_posts_path(@user)
-    else 
-      render :new 
+    else
+      render :new
     end
   end
 
@@ -31,5 +31,4 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :text)
   end
-
 end
