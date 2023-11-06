@@ -13,20 +13,19 @@
         <p class="text-gray-500"><%= @user.bio%></p>
       </div>
     </div>
-    <% @user.posts.each_with_index do |post, index| %>
+    <% @user.posts.includes(:comments, :likes).each_with_index do |post, index| %>
       <a href="<%= user_post_path(@user, post) %>" class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
         <div class="flex-grow"> 
           <h2 class="text-gray-900 title-font font-medium" >Post #<%= index + 1 %></h2>
           <h2 class="text-gray-900 title-font font-medium" ><%= post.title%></h2>
           <p class="text-gray-500"><%= post.text %></p>
-          <p class="text-gray-500">Comments: <%= post.comments.count %> Likes: <%= post.likes.count %> </p>
+          <p class="text-gray-500">Comments: <%= post.comments.size %> Likes: <%= post.likes.size %> </p>
         </div>
       </a>
       <div class="h-full border-gray-200 border p-4 rounded-lg mb-20">
-        <% if post.comments.count >= 1 %> 
-          <% post.top_comments.each do |comment| %>
-            <% user = User.find(comment.user_id) %>
-            <p class="text-gray-500"><%= user.name %>: <%= comment.text %></p>
+        <% if post.comments.size >= 1 %> 
+          <% post.top_comments.includes(:user).each do |comment| %>
+            <p class="text-gray-500"><%= comment.user.name %>: <%= comment.text %></p>
           <% end %>
           <% else %>
             <p class="text-gray-500">No comments yet.</p>
