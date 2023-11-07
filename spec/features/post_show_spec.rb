@@ -10,10 +10,10 @@ RSpec.describe 'User post index', type: :system do
     Comment.create(post: first_post, user: second_user, text: 'First comment on first post' )
     Comment.create(post: first_post, user: second_user, text: 'Second comment on first post' )
     Comment.create(post: first_post, user: second_user, text: 'Third comment on first post' )
-    Comment.create(post: first_post, user: third_user, text: 'Fourth Comment on first post' )
+    Comment.create(post: first_post, user: third_user, text: 'Fourth comment on first post' )
     Like.create(user:second_user, post: first_post)
     
-    visit user_posts_path(User.find_by(name: 'Tom'))
+    visit user_post_path(User.find_by(name: 'Tom'), first_post)
   end
   describe 'checks the posts atributes' do
     it 'shows the post title' do
@@ -23,7 +23,10 @@ RSpec.describe 'User post index', type: :system do
       expect(page).to have_content('by Tom')
     end
     it 'shows how many comments and likes  a post has' do
-      expect(page).to have_content('Comments: 4 Likes: 1')
+      expect(page).to have_content('Comments: 4')
+    end
+    it 'shows how many  likes a post has' do
+      expect(page).to have_content('Likes: 1')
     end
     it 'shows the post body' do
       expect(page).to have_content('This is my first post text')

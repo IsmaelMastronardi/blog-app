@@ -5,10 +5,12 @@ RSpec.describe 'User post index', type: :system do
     driven_by(:rack_test)
     first_user = User.create(name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.')
     second_user = User.create(name: 'Lilly', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Poland.')
-    fourth_post = Post.create(author: first_user, title: 'my fourth post', text: 'This is my fourth post text')
-    third_post = Post.create(author: first_user, title: 'my third post', text: 'This is my third post text')
-    second_post = Post.create(author: first_user, title: 'my second post', text: 'This is my second post text')
     first_post = Post.create(author: first_user, title: 'my first post', text: 'This is my first post text')
+    second_post = Post.create(author: first_user, title: 'my second post', text: 'This is my second post text')
+    third_post = Post.create(author: first_user, title: 'my third post', text: 'This is my third post text')
+    fourth_post = Post.create(author: first_user, title: 'my fourth post', text: 'This is my fourth post text')
+    fifth_post = Post.create(author: first_user, title: 'my fifth post', text: 'This is my fifth post text')
+    sixth_post = Post.create(author: first_user, title: 'my sixth post', text: 'This is my sixth post text')
     Comment.create(post: first_post, user: second_user, text: 'Comment on first post' )
     Comment.create(post: second_post, user: second_user, text: 'First comment on second post' )
     Comment.create(post: second_post, user: second_user, text: 'Second comment on second post' )
@@ -24,7 +26,7 @@ RSpec.describe 'User post index', type: :system do
       expect(page).to have_css("img[src*='https://unsplash.com/photos/F_-0BxGuVvo']")
     end
     it 'shows the number of posts for the user' do
-      expect(page).to have_content('number of posts: 4')
+      expect(page).to have_content('number of posts: 6')
     end
   end
   describe 'checks the posts atributes' do
@@ -33,12 +35,14 @@ RSpec.describe 'User post index', type: :system do
       expect(page).to have_content('my second post')
       expect(page).to have_content('my third post')
       expect(page).to have_content('my fourth post')
+      expect(page).to have_content('my fifth post')
     end
     it 'shows the posts texts' do
       expect(page).to have_content('This is my first post text')
       expect(page).to have_content('This is my second post text')
       expect(page).to have_content('This is my third post text')
       expect(page).to have_content('This is my fourth post text')
+      expect(page).to have_content('This is my fifth post text')
     end
     it 'shows how many comments for the posts' do
       expect(page).to have_content('Comment on first post')
@@ -50,9 +54,15 @@ RSpec.describe 'User post index', type: :system do
       expect(page).to have_content('Comments: 2 Likes: 0')
       expect(page).to have_content('Comments: 0 Likes: 0')
     end
+  end
+  describe 'checks other functionalities' do
     it 'redirects when clicking on a post' do
       click_link('my first post')
       expect(page).to have_current_path(user_post_path(User.find_by(name: 'Tom'), Post.find_by(title: 'my first post')))
+    end
+    it 'checks the pagination' do
+      click_link('Next')
+      expect(page).to have_content('This is my sixth post text')
     end
   end
 end
