@@ -5,12 +5,12 @@
 # below each fixture, per the syntax in the comments below
 #
 one: {
-  name: mas
+  name: user 1
 
 }
 # column: value
 #
 two: {
-  name: Lilly
+  name: user 2
 }
 # column: value
