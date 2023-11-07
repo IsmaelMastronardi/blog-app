@@ -7,8 +7,7 @@ class PostsController < ApplicationController
   def show
     @current_user = current_user
     @post = Post.find(params[:id])
-    @user = User.find(@post.author_id)
-    @post_index = @user.posts.find_index { |post| post.id == @post.id }
+    @post_index = @post.author.posts.find_index { |post| post.id == @post.id }
   end
 
   def new
