@@ -13,10 +13,12 @@
         <p class="text-gray-500"><%= @user.bio%></p>
       </div>
     </div>
-    <% @user.posts.includes(:comments, :likes).each_with_index do |post, index| %>
+    <%= will_paginate @posts %>
+    <% @posts.includes(:comments, :likes).each_with_index do |post, index| %>
+    <% post_index = (@posts.current_page - 1) * @posts.per_page + index + 1 %>
       <a href="<%= user_post_path(@user, post) %>" class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
         <div class="flex-grow"> 
-          <h2 class="text-gray-900 title-font font-medium" >Post #<%= index + 1 %></h2>
+          <h2 class="text-gray-900 title-font font-medium" >Post #<%= post_index %></h2>
           <h2 class="text-gray-900 title-font font-medium" ><%= post.title%></h2>
           <p class="text-gray-500"><%= post.text %></p>
           <p class="text-gray-500">Comments: <%= post.comments.size %> Likes: <%= post.likes.size %> </p>

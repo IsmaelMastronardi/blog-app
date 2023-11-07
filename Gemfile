@@ -80,3 +80,5 @@ gem 'foreman', '~> 0.87.2'
 gem 'hotwire-livereload'
 
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+
+gem 'will_paginate'
