@@ -1,0 +1,12 @@
+post_one: {
+  title: "First Post",
+  author: <%= users(:one) %>, # Assuming you have a 'users.yml' fixture for authors
+  comments_counter: 3,
+  likes_counter: 5
+}
+post_two: {
+  title: "Second Post",
+  author: <%= users(:two) %>,
+  comments_counter: 2,
+  likes_counter: 7
+}
