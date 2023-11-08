@@ -1,21 +1,22 @@
 require 'rails_helper'
 
 RSpec.describe 'User post index', type: :system do
-  before(:each) do 
+  before(:each) do
     driven_by(:rack_test)
     first_user = User.create(name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.')
-    second_user = User.create(name: 'Lilly', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Poland.')
+    second_user = User.create(name: 'Lilly', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
+                              bio: 'Teacher from Poland.')
     first_post = Post.create(author: first_user, title: 'my first post', text: 'This is my first post text')
     second_post = Post.create(author: first_user, title: 'my second post', text: 'This is my second post text')
-    third_post = Post.create(author: first_user, title: 'my third post', text: 'This is my third post text')
-    fourth_post = Post.create(author: first_user, title: 'my fourth post', text: 'This is my fourth post text')
-    fifth_post = Post.create(author: first_user, title: 'my fifth post', text: 'This is my fifth post text')
-    sixth_post = Post.create(author: first_user, title: 'my sixth post', text: 'This is my sixth post text')
-    Comment.create(post: first_post, user: second_user, text: 'Comment on first post' )
-    Comment.create(post: second_post, user: second_user, text: 'First comment on second post' )
-    Comment.create(post: second_post, user: second_user, text: 'Second comment on second post' )
-    Like.create(user:second_user, post: first_post)
-    
+    Post.create(author: first_user, title: 'my third post', text: 'This is my third post text')
+    Post.create(author: first_user, title: 'my fourth post', text: 'This is my fourth post text')
+    Post.create(author: first_user, title: 'my fifth post', text: 'This is my fifth post text')
+    Post.create(author: first_user, title: 'my sixth post', text: 'This is my sixth post text')
+    Comment.create(post: first_post, user: second_user, text: 'Comment on first post')
+    Comment.create(post: second_post, user: second_user, text: 'First comment on second post')
+    Comment.create(post: second_post, user: second_user, text: 'Second comment on second post')
+    Like.create(user: second_user, post: first_post)
+
     visit user_posts_path(User.find_by(name: 'Tom'))
   end
   describe 'checks the users atributes' do

@@ -1,16 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe 'User show page', type: :system do
-  before(:each) do 
+  before(:each) do
     driven_by(:rack_test)
     first_user = User.create(name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.')
-    second_user = User.create(name: 'Lilly', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Poland.')
-    fourth_post = Post.create(author: first_user, title: 'my fourth post', text: 'This is my fourth post text')
-    third_post = Post.create(author: first_user, title: 'my third post', text: 'This is my third post text')
-    second_post = Post.create(author: first_user, title: 'my second post', text: 'This is my second post text')
-    first_post = Post.create(author: first_user, title: 'my first post', text: 'This is my first post text')
-  
-    
+    User.create(name: 'Lilly', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
+                bio: 'Teacher from Poland.')
+    Post.create(author: first_user, title: 'my fourth post', text: 'This is my fourth post text')
+    Post.create(author: first_user, title: 'my third post', text: 'This is my third post text')
+    Post.create(author: first_user, title: 'my second post', text: 'This is my second post text')
+    Post.create(author: first_user, title: 'my first post', text: 'This is my first post text')
+
+
     visit user_path(User.find_by(name: 'Tom'))
   end
 

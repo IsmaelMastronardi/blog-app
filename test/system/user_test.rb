@@ -7,6 +7,6 @@ class UsersTest < ApplicationSystemTestCase
   test 'my test' do
     visit root_path
     sleep(5)
-    assert_text "user 1"
+    assert_text 'user 1'
   end
 end
