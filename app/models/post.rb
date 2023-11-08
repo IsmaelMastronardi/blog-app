@@ -9,6 +9,8 @@ class Post < ApplicationRecord
   validates :comments_counter, numericality: { greater_than_or_equal_to: 0, only_integer: true }
   validates :likes_counter, numericality: { greater_than_or_equal_to: 0, only_integer: true }
 
+  self.per_page = 5
+
   def update_post_counter
     author.update(post_counter: author.posts.count)
   end
