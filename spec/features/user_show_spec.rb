@@ -11,7 +11,6 @@ RSpec.describe 'User show page', type: :system do
     Post.create(author: first_user, title: 'my second post', text: 'This is my second post text')
     Post.create(author: first_user, title: 'my first post', text: 'This is my first post text')
 
-
     visit user_path(User.find_by(name: 'Tom'))
   end
 
