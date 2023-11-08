@@ -8,8 +8,6 @@ RSpec.describe 'User Index page', type: :system do
     User.create(name: 'Lilly', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
                 bio: 'Teacher from Poland.')
     Post.create(author: first_user, title: 'Hello', text: 'This is my first post')
-    all_users = User.all
-    all_users.each { |us| puts us.id }
     visit root_path
   end
   describe 'checks the users' do

@@ -14,7 +14,7 @@
       </div>
     </div>
     <%= will_paginate @posts %>
-    <% @posts.includes(:comments, :likes).each_with_index do |post, index| %>
+    <% @posts.each_with_index do |post, index| %>
     <% post_index = (@posts.current_page - 1) * @posts.per_page + index + 1 %>
       <a href="<%= user_post_path(@user, post) %>" class="h-full flex items-center border-gray-200 border p-4 rounded-lg">
         <div class="flex-grow"> 
