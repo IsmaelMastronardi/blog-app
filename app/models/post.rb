@@ -18,4 +18,8 @@ class Post < ApplicationRecord
   def top_comments
     comments.order(created_at: :desc).limit(5)
   end
+
+  def as_json(options={})
+    super({ only: [:id] }.merge(options))
+  end
 end
