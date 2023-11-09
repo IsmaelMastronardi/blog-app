@@ -15,7 +15,7 @@
             Likes: <%= @post.likes.count %>
           </p>
             <div>
-            <%= form_with model: @new_like, url: user_post_likes_path(user_id: @current_user, post_id: @post) do |f| %>
+            <%= form_with model: @new_like, url: user_post_likes_path(user_id: @user, post_id: @post) do |f| %>
               <div>
                 <%= button_tag( :class => "button_green") do %>
                 <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5 text-gray-500" viewBox="0 0 24 24">

@@ -24,7 +24,7 @@
           <p class="text-gray-500">Comments: <%= post.comments.size %> Likes: <%= post.likes.size %> </p>
         </div>
       </a>
-      <div class="h-full border-gray-200 border p-4 rounded-lg mb-20">
+      <div class="h-full border-gray-200 border p-4 rounded-lg">
         <% if post.comments.size >= 1 %> 
           <% post.top_comments.includes(:user).each do |comment| %>
             <p class="text-gray-500"><%= comment.user.name %>: <%= comment.text %></p>
@@ -32,6 +32,11 @@
           <% else %>
             <p class="text-gray-500">No comments yet.</p>
         <% end %>
+      </div>
+      <div>
+        <button class="mb-20 text-white bg-indigo-500 border-0 py-2 w-full focus:outline-none hover:bg-indigo-600 rounded text-lg">
+          Delete Post
+        </button>
       </div>
     <% end %>
   </div>
