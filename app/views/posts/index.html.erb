@@ -34,9 +34,11 @@
         <% end %>
       </div>
       <div>
-        <button class="mb-20 text-white bg-indigo-500 border-0 py-2 w-full focus:outline-none hover:bg-indigo-600 rounded text-lg">
-          Delete Post
-        </button>
+          <%= button_to  'Delete',
+              user_post_path(@user, post),
+              method: :delete,
+              class: "mb-20 text-white bg-indigo-500 border-0 py-2 w-full focus:outline-none hover:bg-indigo-600 rounded text-lg"
+          %>
       </div>
     <% end %>
   </div>
