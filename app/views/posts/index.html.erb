@@ -27,7 +27,16 @@
       <div class="h-full border-gray-200 border p-4 rounded-lg">
         <% if post.comments.size >= 1 %> 
           <% post.top_comments.includes(:user).each do |comment| %>
-            <p class="text-gray-500"><%= comment.user.name %>: <%= comment.text %></p>
+            <div class="flex">
+            <p class="mr-6 text-gray-500 py-1"><%= comment.user.name %>: <%= comment.text %></p>
+            <% if can? :destroy, comment %>
+              <%= button_to 'Delete',
+                  user_post_comment_path(@user, post, comment),
+                  method: :delete,
+                  class: "text-white bg-indigo-500 border-0 py-1 pw-4 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+              %>
+            <% end %>
+            </div>
           <% end %>
           <% else %>
             <p class="text-gray-500">No comments yet.</p>

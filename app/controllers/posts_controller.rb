@@ -22,20 +22,13 @@ class PostsController < ApplicationController
     end
   end
 
-  # def destroy
-  #   post = Post.find(params[:id])
-  #   post.destroy
-  #   redirect_to user_posts_path(@user)
-  # end
   def destroy
     @post = @user.posts.find(params[:id])
     @post.likes.destroy_all
     @post.comments.destroy_all
     if @post.destroy
-      flash[:notice] = 'Post deleted!'
       redirect_to user_posts_path(@user)
     else
-      flash[:alert] = 'Failed to delete post!'
       redirect_to user_post_path(@user)
     end
   end
