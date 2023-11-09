@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
+  before_action :find_user
+
   def new
-    @current_user = current_user
     @post = Post.find(params[:post_id])
     @new_comment = Comment.new
     puts @post.title
@@ -18,9 +19,26 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    puts 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
+    puts params
+    @comment = Comment.find(params[:id])
+    puts 'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB'
+    puts @comment
+    if @comment.destroy
+      redirect_to user_posts_path(@user)
+    else
+      redirect_to user_post_path(@user)
+    end
+  end
+
   private
 
+  def find_user
+    @user = User.find(params[:user_id])
+  end
+
   def comment_params
-    params.require(:comment).permit(:text)
+    params.require(:comment).permit(:text, :comment_id)
   end
 end
