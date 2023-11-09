@@ -34,11 +34,13 @@
         <% end %>
       </div>
       <div>
+      <% if can? :destroy, post %>
           <%= button_to  'Delete',
               user_post_path(@user, post),
               method: :delete,
               class: "mb-20 text-white bg-indigo-500 border-0 py-2 w-full focus:outline-none hover:bg-indigo-600 rounded text-lg"
           %>
+        <% end %>
       </div>
     <% end %>
   </div>

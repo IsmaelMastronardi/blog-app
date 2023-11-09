@@ -3,18 +3,16 @@
 class Ability
   include CanCan::Ability
 
-  def initialize(user)
-      # Add in CanCan's ability definition DSL
-    include CanCan::Ability
 
-    def initialize(user)
-      can :read, Post  # start by defining rules for all users, also not logged ones
-      return unless user.present?
-      can :manage, Post, user_id: user.id # if the user is logged in can manage it's own posts
-      can :manage, Comment # logged in users can also create comments
-      return unless user.admin? # if the user is a manager we give additional permissions
-      can :manage, :all # finally we give all remaining permissions only to the admins
-    end
+
+  def initialize(user)
+    can :read, Post  # start by defining rules for all users, also not logged ones
+    return unless user.present?
+    can :manage, Post, author_id: user.id # if the user is logged in can manage it's own posts
+    can :manage, Comment # logged in users can also create comments
+    return unless user.admin? # if the user is a manager we give additional permissions
+    can :manage, :all # finally we give all remaining permissions only to the admins
+  end
 
     # Define abilities for the user here. For example:
     #
@@ -40,5 +38,4 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/CanCanCommunity/cancancan/blob/develop/docs/define_check_abilities.md
-  end
 end

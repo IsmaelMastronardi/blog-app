@@ -28,7 +28,6 @@ class PostsController < ApplicationController
   #   redirect_to user_posts_path(@user)
   # end
   def destroy
-    puts 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
     @post = @user.posts.find(params[:id])
     @post.likes.destroy_all
     @post.comments.destroy_all
