@@ -4,6 +4,9 @@ RSpec.describe 'User post index', type: :system do
   before(:each) do
     driven_by(:rack_test)
     first_user = User.create(name: 'Tom', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Mexico.')
+    puts 'aaaaaaaaaaaaaaaaaaaaaa'
+    puts first_user.name
+    puts first_user.id
     second_user = User.create(name: 'Lilly', photo: 'https://unsplash.com/photos/F_-0BxGuVvo',
                               bio: 'Teacher from Poland.')
     first_post = Post.create(author: first_user, title: 'my first post', text: 'This is my first post text')
