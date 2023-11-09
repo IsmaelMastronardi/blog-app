@@ -6,9 +6,6 @@ class PostsController < ApplicationController
       format.html # index.html.erb
       format.json { render :json => @posts }
     end
-    def as_json(options={})
-      super({ only: [:id] }.merge(options))
-    end
   end
 
   def show
