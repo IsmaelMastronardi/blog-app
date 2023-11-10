@@ -10,7 +10,7 @@ class Api::V1::CommentsController < ApplicationController
 
   def create
     @post = Post.find(params[:post_id])
-    @new_comment = Comment.create(post: @post, user: current_user, text: params[:text] )
+    @new_comment = Comment.create(post: @post, user: current_user, text: params[:text])
     @new_comment.user_id = current_user.id
     if @new_comment.save
       render json: @new_comment, status: :created

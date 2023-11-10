@@ -76,8 +76,8 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
-  gem 'letter_opener'
   gem 'json-formatter-rails'
+  gem 'letter_opener'
 end
 
 group :test do
@@ -86,6 +86,6 @@ group :test do
   gem 'database_cleaner'
 end
 
-gem "active_model_serializers", "~> 0.10.14"
+gem 'active_model_serializers', '~> 0.10.14'
 
-gem "jwt"
+gem 'jwt'

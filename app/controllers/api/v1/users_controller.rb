@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
   skip_before_action :authenticate_request, only: [:create]
-  skip_before_action :verify_authenticity_token, only: [:login, :create]
+  skip_before_action :verify_authenticity_token, only: %i[login create]
   before_action :set_user, only: [:show]
 
   def index
@@ -17,7 +17,7 @@ class Api::V1::UsersController < ApplicationController
     if @user.save
       render json: @user, status: :created
     else
-      render json: {errors: @user.errors.full_messages},
+      render json: { errors: @user.errors.full_messages },
              status: :unprocessable_entity
     end
   end
@@ -31,5 +31,4 @@ class Api::V1::UsersController < ApplicationController
   def set_user
     @user = User.find(params[:id])
   end
-
 end
