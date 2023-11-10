@@ -1,5 +1,11 @@
 class CommentsController < ApplicationController
   before_action :find_user
+  before_action :find_post
+
+  def index
+    @comments = @post.comments
+    # render json: @comments
+  end
 
   def new
     @post = Post.find(params[:post_id])
@@ -20,11 +26,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    puts 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
-    puts params
     @comment = Comment.find(params[:id])
-    puts 'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB'
-    puts @comment
     if @comment.destroy
       redirect_to user_posts_path(@user)
     else
@@ -36,6 +38,10 @@ class CommentsController < ApplicationController
 
   def find_user
     @user = User.find(params[:user_id])
+  end
+
+  def find_post
+    @post = Post.find(params[:id])
   end
 
   def comment_params

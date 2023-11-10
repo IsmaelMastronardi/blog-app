@@ -2,6 +2,10 @@ class PostsController < ApplicationController
   before_action :find_user
   def index
     @posts = @user.posts.paginate(page: params[:page], per_page: 5).includes(:comments, :likes)
+    # respond_to do |format|
+    #   format.html # index.html.erb
+    #   format.json { render :json => @posts }
+    # end
   end
 
   def show
