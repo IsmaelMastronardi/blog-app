@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:index, :create] do
         resources :posts, only: [:index] do
-          resources :comments, only: [:index]
+          resources :comments, only: [:index, :new, :create]
           resources :likes, only: []
         end
       end
@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   post "/api/v1/auth/login", to: "authentication#login"
+  post '/api/v1/user_post_comments', to: 'api/v1/comments#create'
   
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html

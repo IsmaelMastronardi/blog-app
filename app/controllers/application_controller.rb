@@ -1,11 +1,10 @@
 class ApplicationController < ActionController::Base
+  include JsonWebToken
   protect_from_forgery with: :exception
-
+  # skip_before_action :verify_authenticity_token
   before_action :update_allowed_parameters, if: :devise_controller?
 
-  # before_action :authenticate_user!, unless: -> { request.path =~ /^\/api\/v1\//}
   before_action :authenticate_request
-  # before_action :authenticate_user!, unless: -> { request.path =~ /^\/api\/v1\//}
 
   private
 
