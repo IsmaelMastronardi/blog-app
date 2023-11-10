@@ -14,17 +14,14 @@ Rails.application.routes.draw do
 
   post "/api/v1/auth/login", to: "authentication#login"
   post '/api/v1/user_post_comments', to: 'api/v1/comments#create'
+  get 'api/v1/user_posts', to: "api/v1/posts#index"
+  get 'api/v1/post_comments', to: "api/v1/comments#index"
   
   devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :users, only: [:index, :show] do
     resources :posts, only: [:index, :show, :new, :create, :destroy] do
       resources :comments, only: [:new, :create, :destroy]
       resources :likes, only: [:new, :create]
-
-      # member do
-      #   get 'comments_json', to: 'comments#index', defaults: { format: 'json' }
-      # end
     end
   end
 end

@@ -1,10 +1,9 @@
 class Api::V1::PostsController < ApplicationController
+  include JsonWebToken
   before_action :find_user
   def index
     @posts = @user.posts.includes(:comments, :likes)
-    puts 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
     render json: @posts
-
   end
 
   private
