@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   def authenticate_request
     if request.path =~ %r{^/api/v1/}
       header = request.headers['Authorization']
-      header = header.split(' ').last if header
+      header = header.split.last if header
       decoded = jwt_decode(header)
       @current_user = User.find(decoded[:user_id])
     else
