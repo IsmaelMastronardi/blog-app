@@ -19,9 +19,9 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 Blog App <a name="about-project"></a>
+# 📖 Foods and Recipes <a name="about-project"></a>
 
-** Blog App** is a Ruby on Rails aplication to keep track of a blog.
+** Foods and Recipes ** is a Ruby on Rails aplication to keep of foods and recipes.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -52,7 +52,9 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **Interact with Users**
+- ** User sign_in, login and confirmation using devise **
+- ** Create foods and Recipes **
+- ** Calculate the amount of foods and total price that you must buy for your recipies  **
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -79,7 +81,14 @@ Clone this repository to your desired folder:
 
 ```sh
   cd my-folder
-  git https://github.com/IsmaelMastronardi/blog-app.git
+  git https://github.com/IsmaelMastronardi/recipes-app.git
+  
+```
+
+Then run this command:
+
+```sh
+  bundle install
 ```
 
 ### Usage
@@ -111,6 +120,12 @@ To run tests, run the following command:
 - Twitter: [@twitterhandle](https://twitter.com/IsmaMastronardi)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/ismael-mastronardi-361873271/)
 
+👤 **Ali Bello Imoukhuede**
+
+- GitHub: [@githubhandle](https://github.com/devalibello)
+- Twitter: [@twitterhandle](https://twitter.com/i_am_aalee)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/ali-bello-imoukhuede/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- FUTURE FEATURES -->
@@ -128,7 +143,7 @@ To run tests, run the following command:
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/IsmaelMastronardi/blog-app/issues).
+Feel free to check the [issues page](https://github.com/IsmaelMastronardi/recipes-app/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
